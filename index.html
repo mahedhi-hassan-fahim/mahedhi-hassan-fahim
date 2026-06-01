@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mahedhi Hassan Fahim — Embedded Electronics &amp; Hardware Design Engineer</title>
+<meta name="description" content="Portfolio of Mahedhi Hassan Fahim — embedded hardware and PCB design engineer specialising in high-speed and mixed-signal PCB design, microprocessor System-on-Modules, power electronics, and signal/power integrity." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg:        #0a0c14;
+  --bg-soft:   #0f1320;
+  --surface:   #161a2a;
+  --surface-2: #1c2238;
+  --border:    rgba(148, 163, 184, 0.10);
+  --border-strong: rgba(148, 163, 184, 0.18);
+  --text:      #e6e9f2;
+  --text-mid:  #b4bccc;
+  --text-mute: #7a8499;
+  --accent:    #38bdf8;
+  --accent-2:  #818cf8;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --success:   #34d399;
+  --warm:      #fbbf24;
+  --max:       1100px;
+  --radius:    10px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.25);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.30);
+  --shadow-lg: 0 20px 50px rgba(0,0,0,0.45);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Subtle dot-grid background pattern */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== Reveal animation ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10, 12, 20, 0.72);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto;
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+}
+.brand {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800; font-size: 15px;
+  color: var(--text); text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+.brand:hover { color: var(--accent); }
+.brand .accent {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-links {
+  display: flex; gap: 4px;
+  font-size: 13px; font-weight: 500;
+}
+.nav-links a {
+  position: relative;
+  color: var(--text-mid); text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: 4px;
+  width: 0; height: 1.5px;
+  background: var(--accent);
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+.nav-links a:hover { color: var(--text); background: rgba(56, 189, 248, 0.06); }
+.nav-links a:hover::after { width: 16px; }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  padding: 96px 24px 80px;
+  overflow: hidden;
+  z-index: 1;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  left: -200px; top: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, transparent 60%);
+  filter: blur(20px);
+  pointer-events: none;
+  animation: float 18s ease-in-out infinite;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -150px; bottom: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.10) 0%, transparent 60%);
+  filter: blur(20px);
+  pointer-events: none;
+  animation: float 22s ease-in-out infinite reverse;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(40px, -30px); }
+}
+
+.hero-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 220px;
+  gap: 64px; align-items: center;
+  position: relative; z-index: 2;
+}
+.hero-text { animation: fade-in-left 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes fade-in-left {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.kicker {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.24em; text-transform: uppercase;
+  margin-bottom: 18px;
+  padding: 6px 12px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.05);
+}
+.hero h1 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.hero h1 .last {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-title {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.hero-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--text-mute);
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+}
+.hero-location {
+  font-size: 14px; color: var(--text-mid);
+  margin-bottom: 28px;
+}
+.hero-location strong { color: var(--text); font-weight: 500; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 12px 22px;
+  font-size: 13px; font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #0a0c14;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.30);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.45);
+}
+.btn-outline {
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.hero-photo {
+  position: relative;
+  width: 220px; height: 220px;
+  animation: fade-in-right 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes fade-in-right {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.hero-photo img {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--surface);
+  position: relative; z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-photo:hover img { transform: scale(1.03); }
+.hero-photo::before {
+  content: "";
+  position: absolute; inset: -8px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
+  animation: spin 8s linear infinite;
+  z-index: 1;
+  opacity: 0.65;
+}
+.hero-photo::after {
+  content: "";
+  position: absolute; inset: -3px;
+  border-radius: 50%;
+  background: var(--bg);
+  z-index: 1;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ===== CONTENT ===== */
+.content {
+  max-width: var(--max); margin: 0 auto;
+  padding: 32px 24px 64px;
+  position: relative; z-index: 1;
+}
+
+/* h2: section heading with animated accent underline */
+.content h2 {
+  position: relative;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--text);
+  letter-spacing: -0.015em;
+  margin: 72px 0 24px;
+  padding-bottom: 14px;
+  display: inline-block;
+}
+.content h2 .h2-accent {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 48px; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 2px;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.content h2.is-visible .h2-accent { width: 80px; }
+
+.content h3 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--text);
+  margin: 28px 0 12px;
+}
+.content h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 22px 0 10px;
+}
+
+.content p { margin: 12px 0; color: var(--text-mid); }
+.content p strong { color: var(--text); font-weight: 600; }
+.content ul, .content ol {
+  margin: 10px 0 16px 4px;
+  padding-left: 18px;
+  color: var(--text-mid);
+}
+.content li { margin: 6px 0; }
+.content li::marker { color: var(--accent); }
+.content li strong { color: var(--text); font-weight: 600; }
+.content a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.30);
+  transition: all 0.2s;
+}
+.content a:hover { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+.content hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+/* Tables (skill / standards) */
+.content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0 24px;
+  font-size: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.content th {
+  background: var(--surface-2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  text-align: left;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.content td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text-mid);
+  transition: background 0.15s;
+}
+.content tr:last-child td { border-bottom: none; }
+.content tr:hover td { background: rgba(56, 189, 248, 0.025); }
+.content td strong { color: var(--text); font-weight: 600; }
+.content td:first-child { width: 28%; }
+
+/* Chip badges (replaces shields.io images) */
+.chip {
+  display: inline-block;
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--chip-bg, var(--surface-2));
+  border-radius: 4px;
+  margin: 4px 4px 4px 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+.chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Status callout */
+.status-callout {
+  display: flex; align-items: center; gap: 14px;
+  margin: 20px 0;
+  padding: 16px 22px;
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.08), rgba(56, 189, 248, 0.04));
+  border: 1px solid rgba(52, 211, 153, 0.20);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 14px;
+}
+.status-callout strong { color: var(--text); }
+.status-pulse {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--success);
+  flex-shrink: 0;
+  position: relative;
+}
+.status-pulse::after {
+  content: "";
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  background: var(--success);
+  opacity: 0.3;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Blockquotes (project hooks) */
+.content blockquote {
+  margin: 12px 0 20px;
+  padding: 4px 0 4px 20px;
+  border-left: 2px solid var(--accent);
+  color: var(--text-mid);
+  font-style: italic;
+  font-family: 'Archivo', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+.content blockquote p { margin: 0; color: var(--text-mid); }
+
+/* PROJECT CARDS */
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 32px 32px 24px;
+  margin: 32px 0;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s,
+              box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.project-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.project-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+.project-card:hover::before { opacity: 1; }
+.project-card h3.project-h3 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 0 0 6px;
+  color: var(--text);
+  letter-spacing: -0.015em;
+  display: flex; align-items: baseline; gap: 14px;
+}
+.project-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  background: var(--accent-soft);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* Image galleries in project cards (raw <table> in markdown) */
+.project-card table:not([class]),
+.content > table img,
+.project-card table.reveal {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 18px 0;
+}
+.project-card table td,
+.project-card table tr:hover td { background: transparent; border: none; padding: 4px; }
+.project-card table img {
+  width: 100%; max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s;
+}
+.project-card table img:hover {
+  transform: scale(1.015);
+  border-color: var(--accent);
+}
+
+/* Certificate images */
+.content > p > a > img {
+  max-width: 380px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin: 12px 0;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  filter: brightness(0.96);
+}
+.content > p > a > img:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  filter: brightness(1);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  position: relative;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+  padding: 64px 24px 48px;
+  margin-top: 80px;
+  text-align: center;
+  overflow: hidden;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 0;
+  width: 80%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
+  transform: translateX(-50%);
+  opacity: 0.4;
+}
+.footer-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
+.footer h3 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  color: var(--text);
+  font-size: 26px;
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+.footer p { font-size: 14px; color: var(--text-mid); margin: 6px 0; }
+.footer-actions {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  margin: 24px 0 20px;
+}
+.footer .btn { font-size: 12px; padding: 10px 18px; }
+.footer-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-mute);
+  margin-top: 28px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 760px) {
+  .nav-inner { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 56px 20px 48px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; text-align: left; }
+  .hero-photo { width: 140px; height: 140px; order: -1; }
+  .content { padding: 24px 20px 48px; }
+  .content h2 { font-size: 22px; margin-top: 48px; }
+  .project-card { padding: 24px 20px 20px; }
+  .project-card h3.project-h3 { font-size: 18px; gap: 10px; }
+  .content table { font-size: 13px; }
+  .content td, .content th { padding: 11px 14px; }
+  .content td:first-child { width: auto; }
+}
+
+/* Selection */
+::selection { background: var(--accent); color: var(--bg); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">Mahedhi Hassan <span class="accent">Fahim</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#hardware-engineering-expertise">Skills</a>
+      <a href="#featured-projects">Projects</a>
+      <a href="#experience-certificates">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#get-in-touch">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="kicker">Hardware · PCB · Embedded</span>
+      <h1>Mahedhi Hassan <span class="last">Fahim</span></h1>
+      <div class="hero-title">Embedded Electronics &amp; Hardware Design Engineer</div>
+      <div class="hero-tagline">PCB · High-Speed PCB · Mixed-Signal PCB · Embedded Systems</div>
+      <div class="hero-location">
+        Based in <strong>Incheon, South Korea</strong> &nbsp;·&nbsp; International experience in <strong>Malaysia</strong> &amp; <strong>South Korea</strong>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:mahedhihassanfahimeee@gmail.com">Get in touch</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/mahedhi-hassan-fahim-eee/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-outline" href="https://www.fiverr.com/fahim_eee" target="_blank" rel="noopener">Fiverr</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/profile/mahedhi-fahim.jpg" alt="Mahedhi Hassan Fahim" />
+    </div>
+  </div>
+</header>
+
+<main class="content">
+<h2 id="about" class="reveal">About<span class="h2-accent"></span></h2>
+<p>Embedded hardware and PCB design engineer with <strong>over 5 years of experience</strong> delivering reliable, high-performance electronic products across industrial, IoT, automotive, and consumer markets.</p>
+<p>I specialise in <strong>multi-layer and HDI PCB design</strong>, <strong>microprocessor-based System-on-Module (SOM) development</strong>, <strong>high-speed and mixed-signal PCB design</strong>, <strong>power electronics</strong>, and <strong>signal/power integrity</strong>. I take products end-to-end — from concept and schematic capture, through layout and simulation, to <strong>high-speed and mixed-signal testing in the lab</strong>, <strong>prototype bring-up</strong>, and <strong>production support</strong> — while leading design teams and collaborating cross-functionally with QA, QC, and manufacturing.</p>
+<div class="status-callout reveal"><span class="status-pulse"></span><strong>Currently open to new opportunities</strong> in hardware design, embedded systems, and PCB engineering.</div>
+<hr />
+<h2 id="hardware-engineering-expertise" class="reveal">Hardware Engineering Expertise<span class="h2-accent"></span></h2>
+<table class="reveal">
+<thead>
+<tr>
+<th>Domain</th>
+<th>Detailed Skills</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Analog Hardware</strong></td>
+<td>Analog sensors, OP-AMPs, audio amplifiers, audio codecs, BLDC motor drivers, MEMS microphones</td>
+</tr>
+<tr>
+<td><strong>Digital Hardware</strong></td>
+<td>MCUs (STM32, ESP32, AVR, PIC), SoCs &amp; microprocessors (Rockchip RK3588, Hailo-8, Allwinner, NXP i.MX8M Plus, Qualcomm IPQ5018), DDR/LPDDR, eMMC, MIPI, HDMI, USB, PCIe, LVDS, CMOS gate drivers, totem-pole drivers</td>
+</tr>
+<tr>
+<td><strong>Power Electronics</strong></td>
+<td>AC-DC (LLC and flyback converters), DC-DC (buck, boost, buck-boost, LDO), DC-AC (inverters), SMPS design</td>
+</tr>
+<tr>
+<td><strong>Communication Protocols</strong></td>
+<td>UART, I2C, I2S, SPI, CAN bus, RS-485, RS-422, RS-232, TWI, MIPI</td>
+</tr>
+<tr>
+<td><strong>PCB Design Technique</strong></td>
+<td>HDI layout, stack-up design, impedance matching, length matching, signal integrity, power integrity, EMC / EMI mitigation</td>
+</tr>
+<tr>
+<td><strong>Lab Equipment</strong></td>
+<td>Oscilloscopes, vector analyzers, power supplies, function generators, multimeters</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tools-amp-software" class="reveal">Tools &amp; Software<span class="h2-accent"></span></h2>
+<table class="reveal">
+<thead>
+<tr>
+<th>Category</th>
+<th>Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ECAD Tools</strong></td>
+<td>OrCAD X / Allegro X, Altium Designer, KiCAD</td>
+</tr>
+<tr>
+<td><strong>Simulation Tools</strong></td>
+<td>Cadence Sigrity Aurora, LTspice, TINA-TI, OrCAD PSpice</td>
+</tr>
+<tr>
+<td><strong>Programming</strong></td>
+<td>Embedded C, C++, Python <em>— intermediate level, used for device bring-up only</em></td>
+</tr>
+<tr>
+<td><strong>Management Software</strong></td>
+<td>JIRA, Microsoft Office</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="management-amp-collaboration" class="reveal">Management &amp; Collaboration<span class="h2-accent"></span></h2>
+<table class="reveal">
+<thead>
+<tr>
+<th>Domain</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Team Management</strong></td>
+<td>Team management, cross-functional collaboration (QA, QC, production, process improvement)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="design-standards-amp-compliance-competencies" class="reveal">Design Standards &amp; Compliance Competencies<span class="h2-accent"></span></h2>
+<p>Across the projects below, I have hands-on experience designing for the following standards and compliance criteria:</p>
+<table class="reveal">
+<thead>
+<tr>
+<th>Category</th>
+<th>Standards / Competencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EMC / EMI</strong></td>
+<td>Layout-level EMI mitigation, filtering, shielding, return-path management</td>
+</tr>
+<tr>
+<td><strong>ESD Protection</strong></td>
+<td>TVS diodes, ESD-aware layout, IEC 61000-4-2</td>
+</tr>
+<tr>
+<td><strong>Regulatory</strong></td>
+<td>FCC, CE, IEC 61000-4-2</td>
+</tr>
+<tr>
+<td><strong>Signal Integrity</strong></td>
+<td>Crosstalk, coupling, reflection analysis; impedance control; length matching</td>
+</tr>
+<tr>
+<td><strong>Power Integrity</strong></td>
+<td>IR drop analysis, decoupling strategy, PDN design</td>
+</tr>
+<tr>
+<td><strong>High-Speed PCB</strong></td>
+<td>HDI stack-up, controlled impedance, differential routing</td>
+</tr>
+<tr>
+<td><strong>Memory Routing</strong></td>
+<td>DDR4 / LPDDR4 fly-by topology, write-leveling, length and skew control</td>
+</tr>
+<tr>
+<td><strong>High-Speed Buses</strong></td>
+<td>USB 3.0 differential pair routing, PCIe lane routing</td>
+</tr>
+<tr>
+<td><strong>Networking</strong></td>
+<td>Ethernet RGMII routing, magnetics integration</td>
+</tr>
+<tr>
+<td><strong>RF Design</strong></td>
+<td>RF module integration, antenna routing, controlled-impedance RF traces</td>
+</tr>
+<tr>
+<td><strong>Manufacturability</strong></td>
+<td>IPC-2221, IPC-2152, IPC-A-600, IPC-A-610 compliance</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="featured-silicon-amp-processors" class="reveal">Featured Silicon &amp; Processors<span class="h2-accent"></span></h2>
+<p><span class="chip" style="--chip-bg:#03234B">STM32</span>
+<span class="chip" style="--chip-bg:#0091BD">ARM Cortex</span>
+<span class="chip" style="--chip-bg:#000000">NXP i.MX8M</span>
+<span class="chip" style="--chip-bg:#00B8AE">Rockchip RK3588</span>
+<span class="chip" style="--chip-bg:#1F2D3D">Hailo-8</span>
+<span class="chip" style="--chip-bg:#E7352C">ESP32</span>
+<span class="chip" style="--chip-bg:#3253DC">Qualcomm</span>
+<span class="chip" style="--chip-bg:#4A148C">Allwinner</span>
+<span class="chip" style="--chip-bg:#E80000">Xilinx</span>
+<span class="chip" style="--chip-bg:#EE7600">MediaTek</span>
+<span class="chip" style="--chip-bg:#7E2A12">Parallax</span>
+<span class="chip" style="--chip-bg:#EE2722">Microchip</span></p>
+<hr />
+<h2 id="featured-projects" class="reveal">Featured Projects<span class="h2-accent"></span></h2>
+<blockquote>
+<p><strong>Note:</strong> Each project below covers the description, key features, and a checklist of design standards &amp; compliance areas the board was engineered against.</p>
+</blockquote>
+<div class="project-card reveal" id="project-01"><h3 class="project-h3"><span class="project-num">01</span> FALCON — i.MX8M System-on-Module (SODIMM Form Factor)</h3>
+<blockquote>
+<p><strong>Falcon S1</strong> — High-Performance AI Edge Computing SBC.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Embedded Computing &amp; Edge AI</em>
+<strong>Role:</strong> <em>Senior Electronics Design Engineer, Elliance Sdn Bhd, Malaysia</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/01-imx8m-som-sodimm/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/01-imx8m-som-sodimm/02.jpg" width="100%"/></td></tr>
+<tr><td width="50%"><img src="assets/projects/01-imx8m-som-sodimm/03.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/01-imx8m-som-sodimm/04.jpg" width="100%"/></td></tr>
+<tr><td colspan="2"><img src="assets/projects/01-imx8m-som-sodimm/05.jpg" width="50%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Designed and developed a high-performance Single Board Computer (SBC) based on the <strong>NXP i.MX 8M Plus</strong> processor for AI, industrial automation, machine vision, robotics, and edge computing applications.</p>
+<p>The SODIMM connector exposes essential high-speed and low-speed interfaces, enabling the development of application-specific carrier boards for industrial control, AI edge computing, smart agriculture, robotics, IoT gateways, and embedded vision systems.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>8 GB LPDDR4X RAM</li>
+<li>128 GB eMMC flash storage</li>
+<li>Integrated Wi-Fi and Bluetooth Low Energy (BLE) module</li>
+<li>Dual wireless connectivity — onboard PCB antenna and external antenna support</li>
+<li>High-speed SODIMM expansion interface for carrier-board development</li>
+<li>MIPI-CSI camera interfaces for machine vision and imaging applications</li>
+<li>MIPI-DSI display interface for LCD and HMI solutions</li>
+<li>Gigabit Ethernet (RGMII) support</li>
+<li>USB high-speed interfaces</li>
+<li>HDMI display output</li>
+<li>Multiple UART interfaces for serial communication</li>
+<li>I²C and SPI interfaces for peripheral expansion</li>
+<li>General-Purpose Input/Output (GPIO) expansion capability</li>
+</ul>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>High-Speed PCB Design</strong> — HDI stack-up, controlled impedance</li>
+<li><strong>LPDDR4X Routing</strong> — fly-by topology, length &amp; skew matching, write-leveling</li>
+<li><strong>Signal Integrity</strong> — crosstalk, coupling, reflection (Sigrity Aurora simulation)</li>
+<li><strong>Power Integrity</strong> — IR-drop analysis, PDN decoupling</li>
+<li><strong>High-Speed Interfaces</strong> — MIPI-CSI / MIPI-DSI / HDMI / USB differential pair routing</li>
+<li><strong>Ethernet RGMII</strong> — clock-skew control, magnetics integration</li>
+<li><strong>RF Integration</strong> — onboard Wi-Fi/BLE module, PCB antenna routing, external-antenna RF path</li>
+<li><strong>EMC / EMI</strong> — return-path management, RF shielding considerations</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-600</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-02"><h3 class="project-h3"><span class="project-num">02</span> FALCON S1 — Industrial Carrier Board</h3>
+<blockquote>
+<p>Industrial-grade carrier platform for the Falcon S1 SoM.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Embedded Computing &amp; Edge AI</em>
+<strong>Role:</strong> <em>Senior Electronics Design Engineer, Elliance Sdn Bhd, Malaysia</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/02-imx8m-som-carrier-board/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/02-imx8m-som-carrier-board/02.jpg" width="100%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Designed and developed an industrial-grade carrier board for the <strong>Falcon S1 System-on-Module (SoM)</strong>, providing extensive connectivity and expansion capabilities for industrial automation, machine vision, edge AI, robotics, and IoT applications.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>1 × HDMI display output</li>
+<li>Integrated audio codec with audio input / output support</li>
+<li>2 × Raspberry Pi-compatible MIPI-CSI camera connectors</li>
+<li>2 × LVDS display connectors</li>
+<li>1 × MIPI-DSI display connector</li>
+<li>4 × USB 3.0 Type-A host ports</li>
+<li>1 × USB Type-C port</li>
+<li>2 × Gigabit Ethernet (10 / 100 / 1000 Mbps) ports</li>
+<li>1 × CAN FD interface</li>
+<li>1 × RS-232 serial interface</li>
+<li>1 × RS-485 industrial communication interface</li>
+<li>2 × UART expansion connectors</li>
+<li>8 × 12-bit ADC input channels</li>
+<li>16 × GPIO expansion signals</li>
+<li>1 × I²C expansion connector</li>
+</ul>
+<p><strong>Applications</strong></p>
+<p>The carrier board is designed to support industrial control systems, AI-powered edge computing, machine vision, smart agriculture, robotics, factory automation, smart-city infrastructure, and custom embedded solutions. The board exposes high-speed and low-speed interfaces from the Falcon S1 SoM, enabling rapid development and deployment of application-specific systems.</p>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>High-Speed PCB Design</strong> — controlled-impedance routing for SoM interfaces</li>
+<li><strong>USB 3.0 Differential Routing</strong> — length-matched pairs, return-path integrity</li>
+<li><strong>Ethernet RGMII</strong> — clock-skew control, magnetics integration for dual Gigabit ports</li>
+<li><strong>High-Speed Display Interfaces</strong> — HDMI / LVDS / MIPI-DSI differential pair routing</li>
+<li><strong>CAN FD &amp; Industrial Buses</strong> — common-mode filtering, termination for CAN / RS-485 / RS-232</li>
+<li><strong>Mixed-Signal Layout</strong> — 12-bit ADC isolation, analog / digital ground partitioning</li>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on all user-facing I/O and connectors</li>
+<li><strong>EMC / EMI</strong> — return-path management, shielding for high-speed I/O</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-610</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-03"><h3 class="project-h3"><span class="project-num">03</span> MAPLE ROUTER — Dual-Band Industrial Wi-Fi 6 Router</h3>
+<blockquote>
+<p>Industrial-grade Wi-Fi 6 + cellular networking platform.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Connectivity, RF &amp; IoT</em>
+<strong>Role:</strong> <em>Hardware Design Engineer</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/03-wifi6-router-ipq5018/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/03-wifi6-router-ipq5018/02.jpg" width="100%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Designed and developed an industrial-grade <strong>dual-band Wi-Fi 6 router</strong> based on Qualcomm networking platforms, targeting enterprise networking, industrial IoT, smart factories, smart cities, and edge connectivity applications.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>Qualcomm IPQ5018 SoC-based networking platform</li>
+<li>Dual-band Wi-Fi 6 (802.11ax) support</li>
+<li>2.4 GHz Wi-Fi radio powered by Qualcomm IPQ5018</li>
+<li>5 GHz Wi-Fi radio powered by Qualcomm QCN6122</li>
+<li>High-performance wireless connectivity with enhanced throughput and coverage</li>
+<li>QCA8337 Gigabit Ethernet switch</li>
+<li>4 × Gigabit LAN ports</li>
+<li>Dual M.2 slots supporting LTE / 4G / 5G modem expansion</li>
+<li>2 × USB interfaces for M.2 cellular modem connectivity</li>
+</ul>
+<p><strong>Applications</strong></p>
+<p>The Maple Router is designed for industrial IoT gateways, smart manufacturing, transportation systems, enterprise networking, remote monitoring, smart-city infrastructure, edge-AI deployments, and locations requiring reliable Wi-Fi and cellular network redundancy. The dual-band Wi-Fi 6 architecture and dual LTE modem capability provide high-speed, resilient, and flexible connectivity for mission-critical applications.</p>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>RF Module Integration</strong> — dual-band Wi-Fi 6 RF chains, antenna routing, matching networks</li>
+<li><strong>Cellular RF</strong> — M.2 LTE / 4G / 5G modem integration, cellular antenna paths</li>
+<li><strong>EMC / EMI</strong> — multi-radio coexistence, RF emissions control, shielding, filtering</li>
+<li><strong>Regulatory</strong> — FCC and CE design considerations for Wi-Fi 6 and cellular operation</li>
+<li><strong>Ethernet RGMII</strong> — controlled-impedance routing, clock-skew management across switch ports</li>
+<li><strong>High-Speed PCB Design</strong> — multi-layer impedance-controlled stack-up</li>
+<li><strong>USB Differential Routing</strong> — length-matched pairs for M.2 USB lanes</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-600</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-04"><h3 class="project-h3"><span class="project-num">04</span> OPENFLOPPY — FPGA-Based DSP and Embedded Processing System</h3>
+<blockquote>
+<p>Programmable DSP platform with FPGA, Wi-Fi, audio codec, and high-speed storage.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Embedded Computing &amp; Edge AI</em>
+<strong>Role:</strong> <em>Hardware Design Engineer</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/04-fpga-dsp-artix7/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/04-fpga-dsp-artix7/02.jpg" width="100%"/></td></tr>
+<tr><td colspan="2" align="center"><img src="assets/projects/04-fpga-dsp-artix7/03.jpg" width="80%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Designed and developed a high-performance <strong>FPGA-based Digital Signal Processing (DSP) platform</strong> for real-time signal processing, software-defined radio (SDR), audio applications, and embedded computing research.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>Xilinx Artix-7 FPGA (XC7A100T-2FGG484I)</li>
+<li>High-capacity programmable logic for custom DSP and hardware acceleration</li>
+<li>SDIO interface for standard SD card connectivity</li>
+<li>SD Express interface for high-speed storage applications</li>
+<li>W25Q01JVZEIQ NOR Flash memory for FPGA boot configuration and firmware storage</li>
+<li>ESP32 wireless subsystem connected via QSPI interface to the FPGA</li>
+<li>Integrated Wi-Fi connectivity for remote communication and control</li>
+<li>TLV320DAC3100 audio codec for high-quality audio input / output and digital audio processing</li>
+<li>Custom FPGA logic implementation for real-time signal processing and hardware acceleration</li>
+<li>Flexible architecture supporting embedded Linux, bare-metal applications, and custom FPGA designs</li>
+</ul>
+<p><strong>Applications</strong></p>
+<p>The OpenFloppy platform is designed for digital signal processing, software-defined radio (SDR), audio processing, wireless communication research, FPGA development, edge computing, industrial control, and rapid prototyping of custom hardware-acceleration solutions. The combination of FPGA processing, high-speed storage interfaces, wireless connectivity, and audio capabilities makes it suitable for advanced embedded and research applications.</p>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>High-Speed PCB Design</strong> — controlled-impedance digital routing for FPGA banks</li>
+<li><strong>Signal Integrity</strong> — length matching across FPGA I/O, QSPI, and SD Express buses</li>
+<li><strong>Power Integrity</strong> — multi-rail PDN with decoupling and sequencing for FPGA core / VCCAUX / VCCIO</li>
+<li><strong>SD Express Differential Routing</strong> — high-speed differential pair routing for PCIe-class lanes</li>
+<li><strong>QSPI Routing</strong> — controlled impedance and length matching between FPGA and ESP32</li>
+<li><strong>Mixed-Signal Layout</strong> — analog / digital ground partitioning for the audio codec</li>
+<li><strong>EMC / EMI</strong> — clock-noise mitigation, return-path management</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-600</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-05"><h3 class="project-h3"><span class="project-num">05</span> Allwinner H3 Processor Board — Custom HDMI Switching System</h3>
+<blockquote>
+<p>Embedded multimedia processing board with custom HDMI switching architecture.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Embedded Computing &amp; Edge AI</em>
+<strong>Role:</strong> <em>Hardware Design Engineer</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/05-allwinner-h3-hdmi-switcher/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/05-allwinner-h3-hdmi-switcher/02.jpg" width="100%"/></td></tr>
+<tr><td colspan="2"><img src="assets/projects/05-allwinner-h3-hdmi-switcher/03.jpg" width="50%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Designed and developed an embedded multimedia processing board based on the <strong>Allwinner H3</strong> application processor, featuring a <strong>custom HDMI switching architecture</strong> for flexible video routing and display management applications.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>Allwinner H3 quad-core ARM Cortex-A7 processor</li>
+<li>Custom HDMI switcher implementation using a dedicated HDMI switching IC</li>
+<li>Single HDMI input source support</li>
+<li>Dynamic HDMI signal routing and switching capability</li>
+<li>Configurable HDMI output assignment based on application requirements</li>
+<li>High-definition video processing and display support</li>
+<li>Embedded Linux operating system integration</li>
+<li>Optimised PCB design for high-speed HDMI signal integrity</li>
+</ul>
+<p><strong>Applications</strong></p>
+<p>The platform is designed for digital signage, multimedia distribution systems, video surveillance displays, conference-room systems, industrial HMIs, and custom video-routing applications. The custom HDMI switching architecture enables flexible video source management and seamless display control tailored to specific customer requirements.</p>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>High-Speed PCB Design</strong> — DDR3 fly-by routing and HDMI controlled-impedance routing</li>
+<li><strong>Signal Integrity</strong> — HDMI TMDS differential-pair impedance control, length matching</li>
+<li><strong>HDMI Switching Topology</strong> — careful routing through the switching IC to preserve TMDS integrity</li>
+<li><strong>EMC / EMI</strong> — HDMI clock-noise mitigation, shielding strategy</li>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on HDMI input / output connectors</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-600</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-06"><h3 class="project-h3"><span class="project-num">06</span> E-Bike IoT Control Board</h3>
+<blockquote>
+<p>ESP32-based smart connected control system for next-generation mobility.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Connectivity, IoT &amp; Automotive</em>
+<strong>Role:</strong> <em>Lead Electronics Design Engineer, Malcan Technologies Sdn Bhd, Malaysia</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/06-ebike-iot-control-board/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/06-ebike-iot-control-board/02.jpg" width="100%"/></td></tr>
+<tr><td colspan="2"><img src="assets/projects/06-ebike-iot-control-board/03.jpg" width="50%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Designed and developed a smart <strong>IoT-enabled E-Bike control system</strong> based on the <strong>ESP32</strong> platform, providing vehicle tracking, wireless access control, battery monitoring, cloud connectivity, and motor communication for next-generation connected mobility solutions.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>ESP32-based main controller for system management and wireless communication</li>
+<li>Real-time GPS location tracking and vehicle coordinate reporting</li>
+<li>Integrated cellular connectivity using <strong>Quectel BG96</strong> LTE Cat-M1 / NB-IoT module with eSIM support</li>
+<li>BLE-based smart locking and unlocking functionality via mobile application</li>
+<li>NFC card authentication for secure bike access and unlocking</li>
+<li>RGB LED status indication for battery level, charging status, connectivity, and system notifications</li>
+<li>CAN bus communication interface for motor controller integration</li>
+<li>Cloud-based monitoring and fleet-management capability</li>
+<li>Remote diagnostics and status reporting</li>
+<li>Low-power operation optimised for battery-powered applications</li>
+<li>Secure wireless communication and device authentication</li>
+</ul>
+<p><strong>Applications</strong></p>
+<p>The platform is designed for smart e-bikes, electric scooters, shared mobility services, fleet management systems, connected transportation solutions, and IoT-enabled electric vehicle ecosystems requiring secure access control, location tracking, and real-time connectivity.</p>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>RF Module Integration</strong> — BLE / Wi-Fi (ESP32), LTE / NB-IoT, NFC antennas and matching networks</li>
+<li><strong>Multi-Radio Coexistence</strong> — ESP32 + cellular + NFC sharing board space</li>
+<li><strong>EMC / EMI</strong> — radiated emissions control across multiple radios</li>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on all user-facing and external interfaces</li>
+<li><strong>Regulatory</strong> — FCC and CE design compliance for consumer / mobility use</li>
+<li><strong>CAN Bus</strong> — automotive-grade routing, termination, common-mode filtering</li>
+<li><strong>Low-Power Design</strong> — power-domain partitioning and sleep-state management for battery operation</li>
+<li><strong>Secure Communication</strong> — provisioning and authentication architecture for cloud connectivity</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-07"><h3 class="project-h3"><span class="project-num">07</span> Telecom Tower-Room OCD Controller</h3>
+<blockquote>
+<p>Operation &amp; Control Device for telecom tower infrastructure — remote monitoring, environmental control, and surge protection.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Industrial Control, Telecom Infrastructure</em>
+<strong>Role:</strong> <em>Hardware Design Engineer</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/07-telephone-tower-ocd-controller/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/07-telephone-tower-ocd-controller/02.jpg" width="100%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Designed and developed an <strong>industrial-grade Operation and Control Device (OCD) Controller</strong> for telecommunication tower infrastructure management, providing remote monitoring, environmental control, equipment protection, security management, and communication capabilities.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>ESP32-based main controller for system management and monitoring</li>
+<li>Control and monitoring of telecommunication power and auxiliary loads</li>
+<li>Automatic hazard / obstruction warning-light control for telecom towers</li>
+<li>Temperature-based fan control for equipment cabinets and control rooms</li>
+<li>RS-485 communication interface for integration with remote devices and sensors</li>
+<li>128 MB Flash memory for event logging, system records, and diagnostics</li>
+<li>Ethernet connectivity for remote monitoring and management</li>
+<li>Control-room security monitoring and access management</li>
+<li>Integrated <strong>camera</strong> for video surveillance of the shelter / control room</li>
+<li><strong>PIR motion sensor</strong> for intrusion and presence detection</li>
+<li><strong>Fire alarm interface</strong> for fire detection and emergency response</li>
+<li>Real-time alarm and fault notification system</li>
+<li>Remote configuration and firmware update capability</li>
+<li>Industrial-grade reliability for 24 / 7 operation</li>
+</ul>
+<p><strong>Protection Features</strong></p>
+<ul>
+<li>Lightning surge protection using Gas Discharge Tubes (GDT)</li>
+<li>High-energy transient suppression using Metal Oxide Varistors (MOV)</li>
+<li>Fast-transient and ESD protection using TVS diodes</li>
+<li>Protection against high-voltage spikes and electrical surges</li>
+<li>Enhanced reliability for outdoor telecom-infrastructure environments</li>
+</ul>
+<p><strong>Applications</strong></p>
+<p>The OCD Controller is designed for telecommunications towers, cellular base stations, network-infrastructure shelters, remote communication sites, data-communication facilities, and industrial monitoring systems requiring reliable environmental control, equipment protection, remote management, and operational logging.</p>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>Surge &amp; Lightning Protection</strong> — multi-stage GDT / MOV / TVS protection topology (IEC 61000-4-5)</li>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on all field I/O and external interfaces</li>
+<li><strong>EMC / EMI</strong> — industrial-environment immunity and emissions control</li>
+<li><strong>Power Integrity</strong> — robust power conditioning for unmanned 24 / 7 operation</li>
+<li><strong>Ethernet Routing</strong> — controlled-impedance differential pair routing, magnetics integration</li>
+<li><strong>RS-485 Bus</strong> — termination, common-mode filtering, isolation considerations</li>
+<li><strong>Mains / Load Isolation</strong> — clearance and creepage for relay-driven AC loads</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-610 for industrial reliability</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-08"><h3 class="project-h3"><span class="project-num">08</span> Multi-Language Smart Keyboard with OLED Key Display</h3>
+<blockquote>
+<p>Innovative keyboard with an individual OLED display in every keycap — supports 50+ languages.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Consumer Electronics &amp; HMI</em>
+<strong>Role:</strong> <em>Hardware Design Engineer</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/08-multilang-keyboard-oled/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/08-multilang-keyboard-oled/02.jpg" width="100%"/></td></tr>
+<tr><td width="50%"><img src="assets/projects/08-multilang-keyboard-oled/03.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/08-multilang-keyboard-oled/04.jpg" width="100%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Designed and developed an innovative <strong>smart keyboard platform</strong> capable of supporting more than <strong>50 languages</strong> through dynamically configurable key layouts. The system uses <strong>individual OLED displays integrated into each key</strong>, allowing real-time character and language adaptation without changing physical keycaps.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>STM32F3-series microcontroller-based architecture</li>
+<li>Individual OLED display integrated into each keycap</li>
+<li>Dynamic key labelling with real-time character updates</li>
+<li>Support for 50+ international languages and keyboard layouts</li>
+<li>Dedicated language-switching button for instant layout changes</li>
+<li>64 MB onboard Flash memory for language packs, fonts, and configuration data</li>
+<li>User-configurable keyboard layouts and custom mappings</li>
+<li>Real-time display updates for multilingual input</li>
+<li>Compact and ergonomic keyboard design</li>
+<li>Low-power embedded system architecture</li>
+</ul>
+<p><strong>Applications</strong></p>
+<p>The Multi-Language Smart Keyboard is designed for multilingual users, translators, educational institutions, government organisations, international businesses, software developers, and accessibility applications. The dynamic OLED key technology enables seamless switching between more than 50 languages on a single keyboard, eliminating the need for multiple physical keyboards or printed multilingual keycaps.</p>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>High-Density PCB Layout</strong> — driving an array of per-key OLED displays with minimal trace congestion</li>
+<li><strong>Signal Integrity</strong> — clean OLED display interfaces (SPI / I²C) routed across the keyboard matrix</li>
+<li><strong>EMC / EMI</strong> — display clock-noise control across many simultaneous OLEDs</li>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on key inputs and external interfaces</li>
+<li><strong>Low-Power Design</strong> — power-domain partitioning, OLED dimming / refresh control</li>
+<li><strong>Mechanical Integration</strong> — PCB layout coordinated with keycap mechanics and OLED placement</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-610</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-09"><h3 class="project-h3"><span class="project-num">09</span> MTK6261D Feature Phone</h3>
+<blockquote>
+<p>Cost-optimised feature phone platform for entry-level and emerging-market applications.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Consumer Electronics</em>
+<strong>Role:</strong> <em>Assistant Director (R&amp;I Hardware), Walton Hi-Tech Industries PLC, Bangladesh</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/09-mtk6261d-feature-phone/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/09-mtk6261d-feature-phone/02.jpg" width="100%"/></td></tr>
+<tr><td width="50%"><img src="assets/projects/09-mtk6261d-feature-phone/03.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/09-mtk6261d-feature-phone/04.jpg" width="100%"/></td></tr>
+<tr><td width="50%"><img src="assets/projects/09-mtk6261d-feature-phone/05.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/09-mtk6261d-feature-phone/06.jpg" width="100%"/></td></tr>
+<tr><td width="50%"><img src="assets/projects/09-mtk6261d-feature-phone/07.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/09-mtk6261d-feature-phone/08.jpg" width="100%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Designed and developed a <strong>cost-optimised feature phone platform</strong> based on the MediaTek MTK6261D mobile processor, targeting entry-level and emerging-market applications. The design focused on <strong>low manufacturing cost, high reliability, and essential communication features</strong> while maintaining a compact PCB implementation.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>MediaTek MTK6261D all-in-one mobile SoC</li>
+<li>Low-cost 4-layer PCB design optimised for mass production</li>
+<li>Classic feature-phone form factor with physical keypad</li>
+<li>3.5-inch colour display</li>
+<li>Dual SIM support for multi-network operation</li>
+<li>Integrated Bluetooth connectivity</li>
+<li>RF front-end design for GSM cellular communication</li>
+<li>2 MP camera module support</li>
+<li>MicroSD card expansion slot</li>
+<li>Battery Management System (BMS) for charging and battery protection</li>
+<li>Integrated audio subsystem for voice calls and multimedia</li>
+<li>Compact and power-efficient architecture</li>
+</ul>
+<p><strong>Applications</strong></p>
+<p>The MTK6261D Feature Phone is designed for cost-sensitive consumer markets, emerging economies, enterprise communication devices, educational programs, and users requiring a reliable and affordable mobile communication solution. The platform delivers essential mobile-phone functionality with low power consumption and reduced manufacturing cost.</p>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>RF Module Integration</strong> — GSM RF front-end, antenna matching, dual-SIM RF switching</li>
+<li><strong>EMC / EMI</strong> — mixed-signal noise isolation between RF, audio, and digital domains</li>
+<li><strong>Regulatory</strong> — FCC and CE design considerations for GSM and Bluetooth</li>
+<li><strong>Dense Mixed-Signal Layout</strong> — compact motherboard with careful analog / digital / RF partitioning</li>
+<li><strong>Design for Manufacturability (DFM)</strong> — 4-layer stack-up, panel-friendly layout, low-cost components, IPC-A-610 acceptance</li>
+<li><strong>Battery / Power Safety</strong> — BMS layout, charge-path isolation, thermal considerations</li>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on SIM, MicroSD, audio jack, charging port, and keypad</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-610</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-10"><h3 class="project-h3"><span class="project-num">10</span> Smart Refrigerator Frost Controller with Capacitive Touch Interface</h3>
+<blockquote>
+<p>Cost-effective refrigerator controller supporting both induction and inverter BLDC compressors.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Appliance Electronics</em>
+<strong>Role:</strong> <em>Assistant Director (R&amp;I Hardware), Walton Hi-Tech Industries PLC, Bangladesh</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/10-frost-controller-touch/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/10-frost-controller-touch/02.jpg" width="100%"/></td></tr>
+<tr><td width="50%"><img src="assets/projects/10-frost-controller-touch/03.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/10-frost-controller-touch/04.jpg" width="100%"/></td></tr>
+<tr><td colspan="2"><img src="assets/projects/10-frost-controller-touch/05.jpg" width="50%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Designed and developed a <strong>cost-effective refrigerator frost controller</strong> for domestic and commercial refrigeration systems. The controller provides temperature monitoring, compressor control, user-interface management, and safety features through a <strong>capacitive touch-based control panel</strong>.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>STM32G0-series low-cost 32-bit microcontroller</li>
+<li>Dedicated capacitive touch controller IC interfaced via I²C</li>
+<li>Support for both induction compressor (relay control) and inverter BLDC compressor control</li>
+<li>NTC temperature-sensor interface for cabinet temperature monitoring</li>
+<li>Capacitive touch user interface with multiple touch keys</li>
+<li>Dual seven-segment LED display for temperature, operating mode, and fault indication</li>
+<li>Child-lock functionality activated through long-press touch operation</li>
+<li>Multiple refrigerator operating-mode selections</li>
+<li>Real-time temperature control and monitoring</li>
+<li>Low-power embedded system architecture</li>
+</ul>
+<p><strong>Applications</strong></p>
+<p>The Frost Controller is designed for household refrigerators, commercial refrigeration equipment, beverage coolers, display refrigerators, mini refrigerators, and energy-efficient inverter-based cooling systems. The capacitive touch interface and digital display provide a modern user experience while maintaining a low-cost and highly reliable control solution.</p>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on touch panel (critical for capacitive sensing reliability)</li>
+<li><strong>EMC / EMI</strong> — appliance-environment immunity and emissions</li>
+<li><strong>Mains Isolation &amp; Safety</strong> — clearance / creepage for relay-driven AC loads, conformal coating considerations</li>
+<li><strong>Mixed-Signal Layout</strong> — analog NTC sensing isolated from digital and relay-switching domains</li>
+<li><strong>Capacitive Touch Routing</strong> — shielded sensor traces, ground-pour discipline for stable sensing</li>
+<li><strong>BLDC Compressor Control</strong> — clean PWM / control-signal routing to the inverter driver</li>
+<li><strong>Regulatory</strong> — CE design compliance for household appliances</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-610</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-11"><h3 class="project-h3"><span class="project-num">11</span> Smart Chest Freezer Controller — STM32G0 / PIC32 Variants</h3>
+<blockquote>
+<p>Digital control platform for chest freezers, with dual-MCU variants supporting both induction and BLDC inverter compressors.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Appliance Electronics</em>
+<strong>Role:</strong> <em>Assistant Director (R&amp;I Hardware), Walton Hi-Tech Industries PLC, Bangladesh</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/11-chest-fridge-controller/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/11-chest-fridge-controller/02.jpg" width="100%"/></td></tr>
+<tr><td width="50%"><img src="assets/projects/11-chest-fridge-controller/03.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/11-chest-fridge-controller/04.jpg" width="100%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Developed a <strong>digital control system for chest freezers</strong>, available in both <strong>STM32G0</strong> and <strong>PIC32</strong> microcontroller variants. The platform was engineered as a low-cost appliance controller suitable for high-volume consumer-product manufacturing, with a <strong>common hardware and firmware architecture</strong> that supports multiple freezer product variants on a single platform.</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li>Dual MCU options — STM32G0 and PIC32 — sharing a common platform architecture</li>
+<li>Cabinet temperature monitoring with precision NTC temperature sensors</li>
+<li>Support for both relay-driven induction compressors and inverter-based BLDC compressors</li>
+<li>Dedicated capacitive touch controller IC interfaced via I²C</li>
+<li>Capacitive touch user interface for temperature adjustment and mode selection</li>
+<li>Dual seven-segment LED display for temperature, operating status, and fault indication</li>
+<li>Child Lock activated via long-press touch detection</li>
+<li>
+<p>Operating modes: <strong>Fast Freeze, Eco Mode, Normal Operation</strong></p>
+</li>
+<li>
+<p>Diagnostic error-code reporting for field troubleshooting and maintenance</p>
+</li>
+<li>Firmware optimised for low-cost embedded hardware and appliance-grade reliability</li>
+<li>Multi-product platform reuse — single architecture across multiple freezer SKUs</li>
+</ul>
+<p><strong>Applications</strong></p>
+<p>The platform is designed for chest freezers, deep freezers, ice-cream freezers, commercial cold-storage units, beverage freezers, and other high-volume consumer cold-storage products requiring reliable digital control, capacitive touch user experience, and a flexible architecture supporting multiple product variants.</p>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on touch panel and external interfaces</li>
+<li><strong>EMC / EMI</strong> — appliance-environment immunity and conducted-emission control</li>
+<li><strong>Mains Isolation &amp; Safety</strong> — clearance / creepage for relay-driven AC loads</li>
+<li><strong>Mixed-Signal Layout</strong> — analog NTC sensing isolated from digital and switching domains</li>
+<li><strong>Capacitive Touch Routing</strong> — shielded sensor traces, ground-pour discipline for stable sensing</li>
+<li><strong>BLDC Compressor Control</strong> — clean PWM / control-signal routing to the inverter driver</li>
+<li><strong>Platform Reusability</strong> — common PCB and firmware base across multiple freezer SKUs (variant-aware design)</li>
+<li><strong>Regulatory</strong> — CE design compliance for household appliances</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-610</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-12"><h3 class="project-h3"><span class="project-num">12</span> Rechargeable Fan Controller</h3>
+<blockquote>
+<p>AC + battery dual-power fan platform with automatic backup and dual-motor PWM control.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Appliance Electronics, Power Electronics</em>
+<strong>Role:</strong> <em>Assistant Director (R&amp;I Hardware), Walton Hi-Tech Industries PLC, Bangladesh</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/12-rechargeable-fan-controller/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/12-rechargeable-fan-controller/02.jpg" width="100%"/></td></tr>
+<tr><td width="50%"><img src="assets/projects/12-rechargeable-fan-controller/03.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/12-rechargeable-fan-controller/04.jpg" width="100%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Developed a <strong>microcontroller-based rechargeable fan control system</strong> designed for uninterrupted operation in residential and commercial environments with unreliable power supply conditions. The system integrates <strong>AC mains operation, battery backup, motor control, and intelligent power management</strong> into a single low-cost embedded platform.</p>
+<p>The design is based on the <strong>STM32G0</strong> series microcontroller and enables <strong>seamless transition between AC power and 12 V lead-acid battery operation</strong>. During normal conditions, the system operates the fan while simultaneously charging the battery through an SMPS-based power stage. In case of AC failure, the system automatically switches to battery mode to ensure continuous operation without user intervention.</p>
+<p>A <strong>dual-motor architecture</strong> is implemented to independently control the main fan motor and the oscillation (swing) motor. <strong>PWM-based control at 12 kHz</strong> is used to regulate fan speed efficiently using a <strong>totem-pole driver stage</strong>, ensuring smooth operation and improved energy efficiency.</p>
+<p>The user interface is designed with a simple and robust <strong>three-button control system</strong>, allowing intuitive operation for power control, speed adjustment, and swing mode activation.</p>
+<p><strong>Technical Highlights</strong></p>
+<ul>
+<li>STM32G0-series low-cost microcontroller-based control system</li>
+<li>Dual power-source architecture — AC mains + 12 V lead-acid battery backup</li>
+<li>Automatic power switching between AC and battery operation</li>
+<li>SMPS-based power supply for system operation and battery charging</li>
+<li>Integrated lead-acid Battery Management System (BMS) for protection and charging control</li>
+<li>Simultaneous fan operation and battery charging during AC mode</li>
+<li>PWM-based fan-speed control at 12 kHz switching frequency</li>
+<li>Totem-pole driver stage for efficient fan-motor driving</li>
+<li>Dual motor control system:</li>
+<li>Main fan motor speed control</li>
+<li>Oscillation (swing) motor control</li>
+<li>Three-button user interface:</li>
+<li>Power ON / OFF control</li>
+<li>Fan speed selection</li>
+<li>Oscillation (swing) control</li>
+<li>Low-voltage battery protection and cutoff mechanism</li>
+<li>Power-failure detection with automatic backup activation</li>
+<li>Optimised embedded firmware for real-time control and power efficiency</li>
+<li>Low-cost appliance-grade PCB design for mass production</li>
+</ul>
+<p><strong>Project Outcome</strong></p>
+<ul>
+<li>Delivered a reliable rechargeable fan system capable of uninterrupted operation during power outages</li>
+<li>Improved overall energy efficiency through optimised PWM motor control</li>
+<li>Achieved seamless AC-to-battery transition without user impact</li>
+<li>Extended battery lifespan through controlled charging and protection logic</li>
+<li>Reduced system cost while maintaining industrial-grade reliability</li>
+<li>Enabled scalable design for multiple rechargeable fan product variants</li>
+</ul>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>Mains Isolation &amp; Safety</strong> — clearance / creepage for AC-input front-end, BMS isolation considerations</li>
+<li><strong>Power Electronics</strong> — SMPS topology, AC-DC conversion, motor PWM drive stage</li>
+<li><strong>Battery / BMS Design</strong> — lead-acid charge profile, low-voltage cutoff, protection logic</li>
+<li><strong>Automatic Power Changeover</strong> — make-before-break / seamless source switching design</li>
+<li><strong>EMC / EMI</strong> — SMPS switching-noise mitigation, PWM motor-drive emission control</li>
+<li><strong>Mixed-Signal Layout</strong> — analog battery sensing isolated from switching and motor-drive domains</li>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on user controls, AC input, and battery terminals</li>
+<li><strong>Regulatory</strong> — CE design compliance for mains-connected household appliance</li>
+<li><strong>DFM</strong> — low-cost PCB, panel-friendly layout, IPC-A-610 acceptance for mass production</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-610</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-13"><h3 class="project-h3"><span class="project-num">13</span> IoT-Enabled 5-Inch RGB TFT Refrigerator Controller</h3>
+<blockquote>
+<p>Smart appliance controller — ESP32-S3, parallel-RGB TFT, Wi-Fi IoT, and dual compressor support.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Connectivity, IoT &amp; HMI, Appliance Electronics</em>
+<strong>Role:</strong> <em>Hardware Design Engineer</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/13-iot-5inch-rgb-tft/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/13-iot-5inch-rgb-tft/02.jpg" width="100%"/></td></tr>
+<tr><td colspan="2"><img src="assets/projects/13-iot-5inch-rgb-tft/03.jpg" width="50%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Developed a <strong>smart refrigerator control and monitoring system</strong> based on the <strong>ESP32-S3</strong>, integrating a high-resolution <strong>5-inch RGB TFT display</strong> with modern IoT connectivity for intelligent appliance management.</p>
+<p>The system is designed to provide a complete user interface for temperature control, mode selection, and real-time monitoring of refrigerator performance. A <strong>parallel RGB (888) interface TFT display</strong> is used to render a modern graphical UI, while <strong>ESP32-S3 GPIO-based capacitive touch inputs</strong> are utilised to implement a touch keypad system for user interaction.</p>
+<p>The controller continuously monitors cabinet temperature using external temperature-sensing circuitry and maintains precise thermal regulation through intelligent control of both conventional and inverter-based refrigeration systems. It supports <strong>relay-based switching for induction compressors</strong> as well as <strong>control-signal output for BLDC inverter compressor controllers</strong>.</p>
+<p>Built-in <strong>Wi-Fi connectivity</strong> enables remote monitoring and control through a mobile application, allowing users to adjust settings and track system status from anywhere via IoT connectivity.</p>
+<p><strong>Technical Highlights</strong></p>
+<ul>
+<li>ESP32-S3 high-performance MCU as main controller</li>
+<li>5-inch TFT display with RGB 888 parallel interface</li>
+<li>Modern graphical UI for temperature control and system monitoring</li>
+<li>GPIO-based touch keypad implementation using ESP32-S3</li>
+<li>Real-time cabinet temperature sensing and feedback control</li>
+<li>Relay control for conventional induction compressor systems</li>
+<li>Digital control signals for inverter BLDC compressor operation</li>
+<li>Dual-mode compressor support (relay + inverter interface)</li>
+<li>Wi-Fi-enabled IoT connectivity for remote monitoring and control</li>
+<li>Mobile-app integration for refrigerator management</li>
+<li>Embedded firmware for display handling, touch input, and control logic</li>
+<li>Low-cost smart-appliance architecture optimised for mass production</li>
+</ul>
+<p><strong>Project Outcome</strong></p>
+<ul>
+<li>Delivered a smart refrigerator controller with modern graphical UI and IoT capability</li>
+<li>Enabled remote temperature monitoring and control via Wi-Fi connectivity</li>
+<li>Improved user experience through 5-inch TFT-based interactive display</li>
+<li>Supported both legacy and inverter compressor systems in a single platform</li>
+<li>Reduced system complexity by integrating display, touch, and control on ESP32-S3</li>
+<li>Created a scalable architecture for next-generation smart appliance products</li>
+</ul>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>High-Speed PCB Design</strong> — RGB 888 parallel-bus routing (24 data lanes + sync signals)</li>
+<li><strong>Signal Integrity</strong> — display-bus length matching, controlled impedance for RGB lanes</li>
+<li><strong>RF / Wi-Fi Integration</strong> — ESP32-S3 antenna routing, RF front-end keepout</li>
+<li><strong>EMC / EMI</strong> — display clock-noise mitigation, Wi-Fi emissions control, compressor-switching isolation</li>
+<li><strong>Mains Isolation &amp; Safety</strong> — clearance / creepage for relay-driven AC compressor loads</li>
+<li><strong>BLDC Compressor Control</strong> — clean PWM / control-signal routing to inverter driver</li>
+<li><strong>Mixed-Signal Layout</strong> — analog temperature sensing isolated from digital, RF, and switching domains</li>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on touch panel, AC input, and external interfaces</li>
+<li><strong>Regulatory</strong> — FCC and CE design compliance for Wi-Fi and mains-connected appliance</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-610</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-14"><h3 class="project-h3"><span class="project-num">14</span> Consumer AC-Operated LED Light Controller</h3>
+<blockquote>
+<p>Low-cost non-isolated AC-DC LED driver for residential and commercial lighting.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Power Electronics, Consumer Lighting</em>
+<strong>Role:</strong> <em>Hardware Design Engineer</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/14-consumer-ac-led-light/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/14-consumer-ac-led-light/02.jpg" width="100%"/></td></tr>
+<tr><td colspan="2"><img src="assets/projects/14-consumer-ac-led-light/03.jpg" width="50%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Developed a <strong>low-cost AC-powered LED lighting driver system</strong> designed for residential and commercial lighting applications, focusing on high efficiency, compact design, and cost-optimised power conversion.</p>
+<p>The system uses a <strong>non-isolated AC-to-DC conversion stage</strong> to directly derive low-voltage DC from 220 V AC input, which is then regulated and used to drive a high-efficiency LED array through a <strong>PWM-based LED driver IC</strong>. The architecture is optimised for minimal component count while maintaining stable brightness control and reliable long-term operation.</p>
+<p><strong>Technical Highlights</strong></p>
+<ul>
+<li>AC mains input — 220 V AC direct-input design</li>
+<li>Non-isolated AC-to-DC conversion IC solution for 12 V DC generation</li>
+<li>Cost-optimised power stage with minimal component count</li>
+<li>PWM-based LED driver IC for controlled current regulation</li>
+<li>High-efficiency LED-array driving architecture</li>
+<li>Stable brightness control using PWM dimming technique</li>
+<li>Compact PCB design optimised for consumer lighting products</li>
+<li>Thermal and surge considerations for AC-direct-operated systems</li>
+<li>Low-cost mass-production-oriented hardware design</li>
+</ul>
+<p><strong>Project Outcome</strong></p>
+<ul>
+<li>Delivered a highly cost-efficient LED lighting driver solution for consumer applications</li>
+<li>Achieved stable and flicker-free LED brightness control using PWM driving</li>
+<li>Reduced overall BOM cost through non-isolated AC-to-DC architecture</li>
+<li>Improved efficiency and reliability for long-duration operation</li>
+<li>Designed a scalable platform suitable for multiple LED lighting product variants</li>
+</ul>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>Power Electronics</strong> — non-isolated AC-DC topology, constant-current LED driving</li>
+<li><strong>Mains Safety</strong> — clearance / creepage for mains-referenced low-voltage rail (non-isolated topology — entire low-voltage side is hot)</li>
+<li><strong>Surge &amp; Transient Protection</strong> — input transient suppression for AC-line events</li>
+<li><strong>EMC / EMI</strong> — conducted and radiated emissions from the switching converter, EMI filtering</li>
+<li><strong>Thermal Design</strong> — power-stage heat dissipation, LED-array thermal management</li>
+<li><strong>PWM Dimming</strong> — flicker-free current modulation for stable perceived brightness</li>
+<li><strong>DFM</strong> — minimal-component-count layout for mass production, IPC-A-610 acceptance</li>
+<li><strong>Regulatory</strong> — CE design compliance for mains-connected consumer lighting</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-610</li>
+</ul>
+</div><hr />
+<div class="project-card reveal" id="project-15"><h3 class="project-h3"><span class="project-num">15</span> IoT Module for Connected Appliances — Wi-Fi / BLE Gateway</h3>
+<blockquote>
+<p>Universal ESP32-S3 connectivity module that upgrades existing appliances into smart products — no host redesign required.</p>
+</blockquote>
+<p><strong>Category:</strong> <em>Connectivity &amp; IoT</em>
+<strong>Role:</strong> <em>Assistant Director (R&amp;I Hardware), Walton Hi-Tech Industries PLC, Bangladesh</em></p>
+<table class="reveal">
+<tr><td width="50%"><img src="assets/projects/15-iot-module-appliances/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/15-iot-module-appliances/02.jpg" width="100%"/></td></tr>
+<tr><td width="50%"><img src="assets/projects/15-iot-module-appliances/03.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/15-iot-module-appliances/04.jpg" width="100%"/></td></tr>
+</table>
+
+<h4>Project Description</h4>
+<p>Developed a <strong>universal IoT module</strong> designed to upgrade existing home appliances into smart connected systems <strong>without requiring redesign of the main appliance controller hardware or firmware</strong>.</p>
+<p>The module is built around the <strong>ESP32-S3</strong> platform and functions as an external connectivity gateway, enabling both <strong>Wi-Fi and Bluetooth Low Energy (BLE)</strong> communication. It bridges legacy appliance controllers with modern cloud and mobile applications, allowing remote monitoring, control, and automation features to be added to existing products.</p>
+<p>The module communicates with the host appliance MCU through <strong>UART</strong>, translating cloud / app commands into appliance-level control signals and returning real-time status updates back to the IoT server.</p>
+<p><strong>Technical Highlights</strong></p>
+<ul>
+<li>ESP32-S3-based dual-mode IoT module (Wi-Fi + BLE)</li>
+<li>Designed to upgrade existing appliances without hardware redesign</li>
+<li>UART interface for communication with legacy appliance controllers</li>
+<li>Supports bidirectional data exchange (control commands + status feedback)</li>
+<li>Wi-Fi connectivity for cloud-based remote monitoring and control</li>
+<li>BLE support for local pairing, provisioning, and mobile-app control</li>
+<li>Lightweight communication protocol for appliance integration</li>
+<li>Compatible with multiple appliances:</li>
+<li>Air conditioners</li>
+<li>Washing machines</li>
+<li>Ovens</li>
+<li>Other smart home devices</li>
+<li>Secure IoT communication architecture with authentication support</li>
+<li>Low-power embedded firmware optimised for always-on connectivity</li>
+<li>Compact module design for easy integration into existing PCB layouts</li>
+</ul>
+<p><strong>Project Outcome</strong></p>
+<ul>
+<li>Enabled rapid IoT transformation of existing non-smart appliances</li>
+<li>Reduced product redevelopment cost for manufacturers</li>
+<li>Provided dual connectivity options (Wi-Fi and BLE) for flexible deployment scenarios</li>
+<li>Improved user experience with remote control and mobile-app integration</li>
+<li>Created a scalable and reusable IoT gateway platform for multiple appliance categories</li>
+</ul>
+<h4>Design Standards &amp; Compliance</h4>
+<ul>
+<li><strong>RF Module Integration</strong> — Wi-Fi + BLE antenna routing, matching network, RF keepout</li>
+<li><strong>EMC / EMI</strong> — emissions control in noisy appliance environments (compressor, motor, switching loads nearby)</li>
+<li><strong>Regulatory</strong> — FCC and CE design compliance for Wi-Fi / BLE consumer use</li>
+<li><strong>ESD Protection</strong> — IEC 61000-4-2 on UART pins and external module-edge connectors</li>
+<li><strong>UART Interface Design</strong> — robust signaling and grounding between module and host MCU</li>
+<li><strong>Low-Power Design</strong> — power-domain partitioning for always-on connectivity</li>
+<li><strong>Secure Communication</strong> — provisioning, authentication, and encrypted cloud transport</li>
+<li><strong>Modular Architecture</strong> — common module reusable across multiple appliance categories</li>
+<li><strong>IPC Standards</strong> — IPC-2221, IPC-A-610</li>
+</ul>
+</div><hr />
+<h2 id="experience-certificates" class="reveal">Experience Certificates<span class="h2-accent"></span></h2>
+<p>Official employment and experience documentation from previous employers (most recent first):</p>
+<h3>Sanion Co., Ltd. — Assistant Researcher, Hardware Team</h3>
+<p><strong>Feb 2026 – May 2026, Incheon, South Korea</strong>
+<em>Hardware research and development</em></p>
+<p><a href="assets/certificates/Sanion_Employment_Confirmation_Letter.pdf">
+ <img src="assets/certificates/sanion-confirmation-preview.jpg" width="380" alt="Sanion Employment Confirmation Letter"/>
+</a></p>
+<p><a href="assets/certificates/Sanion_Employment_Confirmation_Letter.pdf"><strong>Download Full Letter (PDF)</strong></a></p>
+<hr />
+<h3>Elliance Sdn Bhd — Senior Electronic Engineer</h3>
+<p><strong>Jan 2025 – Feb 2026, Penang, Malaysia</strong>
+<em>Hardware design, embedded systems development, and technical leadership</em></p>
+<p><a href="assets/certificates/Elliance_Experience_Certificate.pdf">
+ <img src="assets/certificates/elliance-certificate-preview.jpg" width="380" alt="Elliance Experience Certificate"/>
+</a></p>
+<p><a href="assets/certificates/Elliance_Experience_Certificate.pdf"><strong>Download Full Certificate (PDF)</strong></a></p>
+<hr />
+<h3>Malcan Technologies Sdn Bhd — Electronic Engineer</h3>
+<p><strong>Sep 2023 – Jan 2025, Penang, Malaysia</strong>
+<em>Research &amp; Development engineering, product development, and hardware design</em></p>
+<p><a href="assets/certificates/Malcan_Experience_Certificate.pdf">
+ <img src="assets/certificates/malcan-certificate-preview.jpg" width="380" alt="Malcan Experience Certificate"/>
+</a></p>
+<p><a href="assets/certificates/Malcan_Experience_Certificate.pdf"><strong>Download Full Certificate (PDF)</strong></a></p>
+<hr />
+<h2 id="education" class="reveal">Education<span class="h2-accent"></span></h2>
+<p><strong>B.Sc. in Electrical and Electronic Engineering (EEE)</strong>, <em>2015 – 2019</em>
+Shahjalal University of Science and Technology, Sylhet, Bangladesh
+GPA: <strong>3.34 / 4.00</strong></p>
+<hr />
+<h2 id="research-amp-publications" class="reveal">Research &amp; Publications<span class="h2-accent"></span></h2>
+<ul>
+<li><strong>Senior Thesis</strong> — <em>"Hardware Implementation of a Neural Network on an FPGA Using the Altera DE2-115 Development Board."</em></li>
+<li><strong>Conference Paper</strong> — Presented at the International Conference on Engineering Research, Innovation &amp; Education (<strong>ICERIE</strong>), Paper ID <strong>167</strong>, February 2021.</li>
+</ul>
+<hr />
+<h2 id="awards-amp-achievements" class="reveal">Awards &amp; Achievements<span class="h2-accent"></span></h2>
+<ul>
+<li><strong>2nd Runner-up</strong> — SUST Mechnovation</li>
+<li><strong>2nd Runner-up</strong> — DUET Techfest '20</li>
+<li><strong>International Final-Round Qualifier</strong> (Bangladesh zone) — Techkriti '20</li>
+<li><strong>4th Place</strong> — BUBT BEC Robo Mania</li>
+<li><strong>5th Place</strong> — BUP Tech Surge</li>
+</ul>
+<hr />
+<h2 id="languages" class="reveal">Languages<span class="h2-accent"></span></h2>
+<ul>
+<li><strong>Bengali</strong> — Native</li>
+<li><strong>English</strong> — Advanced</li>
+</ul>
+<hr />
+<h2 id="professional-experience-summary" class="reveal">Professional Experience Summary<span class="h2-accent"></span></h2>
+<table class="reveal">
+<thead>
+<tr>
+<th>Period</th>
+<th>Role</th>
+<th>Company</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Feb 2026 – May 2026</td>
+<td>Assistant Researcher, Hardware Team</td>
+<td><strong>Sanion Co., Ltd.</strong></td>
+<td>Incheon, South Korea</td>
+</tr>
+<tr>
+<td>Jan 2025 – Feb 2026</td>
+<td>Senior Electronic Engineer</td>
+<td><strong>Elliance Sdn Bhd</strong></td>
+<td>Penang, Malaysia</td>
+</tr>
+<tr>
+<td>Sep 2023 – Jan 2025</td>
+<td>Lead Electronics Design Engineer</td>
+<td><strong>Malcan Technologies Sdn Bhd</strong></td>
+<td>Penang, Malaysia</td>
+</tr>
+<tr>
+<td>Jan 2021 – Dec 2022</td>
+<td>Assistant Director, R&amp;I Hardware</td>
+<td><strong>Walton Hi-Tech Industries PLC</strong></td>
+<td>Gazipur, Bangladesh</td>
+</tr>
+<tr>
+<td>Jan 2020 – Present</td>
+<td>Embedded Systems Engineer (Freelance)</td>
+<td><strong>Fiverr</strong></td>
+<td>Remote, Global Clients</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="get-in-touch" class="reveal">Get in Touch<span class="h2-accent"></span></h2>
+<p>I am currently <strong>open to new hardware engineering opportunities</strong> — full-time, contract, or consulting — and welcome conversations about challenging PCB, signal-integrity, or embedded projects worldwide.</p>
+<p><strong>Email:</strong> <a href="mailto:mahedhihassanfahimeee@gmail.com">mahedhihassanfahimeee@gmail.com</a>
+<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mahedhi-hassan-fahim-eee/">linkedin.com/in/mahedhi-hassan-fahim-eee</a>
+<strong>Fiverr:</strong> <a href="https://www.fiverr.com/fahim_eee">fiverr.com/fahim_eee</a></p>
+<hr />
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <h3>Let's build something together.</h3>
+    <p>Open to hardware engineering opportunities — full-time, contract, or consulting.</p>
+    <div class="footer-actions">
+      <a class="btn btn-primary" href="mailto:mahedhihassanfahimeee@gmail.com">Email</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/mahedhi-hassan-fahim-eee/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-outline" href="https://www.fiverr.com/fahim_eee" target="_blank" rel="noopener">Fiverr</a>
+    </div>
+    <p class="footer-tagline">Designed for signal integrity, power integrity, and the people who plug things in.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const elements = document.querySelectorAll('.reveal');
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    elements.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  elements.forEach(el => io.observe(el));
+})();
+</script>
+
+</body>
+</html>
