@@ -879,7 +879,7 @@ Official employment and experience documentation from previous employers (most r
 *Hardware design, embedded systems development, and technical leadership*
 
 <a href="assets/certificates/Elliance_Experience_Certificate.pdf">
- <img src="assets/certificates/elliance-certificate-preview.jpg" width="380" alt="Elliance Experience Certificate"/>
+ <img src="assets/certificates/Elliance_Experience_Certificate.jpg" width="380" alt="Elliance Experience Certificate"/>
 </a>
 
 [**Download Full Certificate (PDF)**](assets/certificates/Elliance_Experience_Certificate.pdf)
