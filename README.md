@@ -7,7 +7,9 @@
 ### Embedded Electronics & Hardware Design Engineer
 ### PCB, High-Speed PCB Design, Mixed-Signal PCB Design, Embedded Systems
 
-Incheon, South Korea, International work experience — Malaysia, South Korea
+International work experience — Malaysia, South Korea · Nationality: Bangladesh · Open to relocation to workplace
+
+**📧 [mahedhihassanfahimeee@gmail.com](mailto:mahedhihassanfahimeee@gmail.com) · 📱 +880 1805-529984 (WhatsApp available)**
 
 [![Email](https://img.shields.io/badge/Email-mahedhihassanfahimeee%40gmail.com-1F3864?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mahedhihassanfahimeee@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-mahedhi--hassan--fahim--eee-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mahedhi-hassan-fahim-eee/)
@@ -219,11 +221,14 @@ The carrier board is designed to support industrial control systems, AI-powered 
 > Industrial-grade Wi-Fi 6 + cellular networking platform.
 
 **Category:** *Connectivity, RF & IoT*
-**Role:** *Hardware Design Engineer*
+**Role:** *Principal R&D Engineer, Kaltech Sdn Bhd*
 
 <table>
 <tr><td width="50%"><img src="assets/projects/03-wifi6-router-ipq5018/01.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/03-wifi6-router-ipq5018/02.jpg" width="100%"/></td></tr>
+<tr><td width="50%"><img src="assets/projects/03-wifi6-router-ipq5018/03.jpg" width="100%"/></td><td width="50%"><img src="assets/projects/03-wifi6-router-ipq5018/04.jpg" width="100%"/></td></tr>
 </table>
+
+*Top row: PCB design views from EDA tool · Bottom row: real-life photos of the assembled KAL5018-1 board (Kaltech)*
 
 #### Project Description
 
@@ -935,11 +940,14 @@ GPA: **3.34 / 4.00**
 
 | Period | Role | Company | Location |
 |---|---|---|---|
+| Jan 2026 – Present | Principal R&D Engineer | **Kaltech Sdn Bhd** | Hybrid |
 | Feb 2026 – May 2026 | Assistant Researcher, Hardware Team | **Sanion Co., Ltd.** | Incheon, South Korea |
 | Jan 2025 – Feb 2026 | Senior Electronic Engineer | **Elliance Sdn Bhd** | Penang, Malaysia |
 | Sep 2023 – Jan 2025 | Lead Electronics Design Engineer | **Malcan Technologies Sdn Bhd** | Penang, Malaysia |
-| Jan 2021 – Dec 2022 | Assistant Director, R&I Hardware | **Walton Hi-Tech Industries PLC** | Gazipur, Bangladesh |
+| Dec 2021 – Jul 2023 | Assistant Director, R&I Hardware | **Walton Hi-Tech Industries PLC (Walton Group)** | Gazipur, Bangladesh |
 | Jan 2020 – Present | Embedded Systems Engineer (Freelance) | **Fiverr** | Remote, Global Clients |
+
+**Current — Kaltech Sdn Bhd (Principal R&D Engineer, Jan 2026 – Present, Hybrid):** Kaltech is an OEM design house delivering R&D product design for client companies. Responsibilities include design of IoT devices, SoMs and carrier boards, requirements finalization, high-speed design and BOM development, and MCU-based control boards.
 
 ---
 
@@ -948,6 +956,7 @@ GPA: **3.34 / 4.00**
 I am currently **open to new hardware engineering opportunities** — full-time, contract, or consulting — and welcome conversations about challenging PCB, signal-integrity, or embedded projects worldwide.
 
 **Email:** [mahedhihassanfahimeee@gmail.com](mailto:mahedhihassanfahimeee@gmail.com)
+**Phone:** +880 1805-529984 (WhatsApp available)
 **LinkedIn:** [linkedin.com/in/mahedhi-hassan-fahim-eee](https://www.linkedin.com/in/mahedhi-hassan-fahim-eee/)
 **Fiverr:** [fiverr.com/fahim_eee](https://www.fiverr.com/fahim_eee)
 
